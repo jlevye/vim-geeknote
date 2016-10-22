@@ -1,6 +1,6 @@
-python import sys
-python import vim
-python sys.path.append(vim.eval('expand("<sfile>:h")'))
+python3 import sys
+python3 import vim
+python3 sys.path.append(vim.eval('expand("<sfile>:h")'))
 
 " ---------------------- Configuration ----------------------------------------
 
@@ -11,28 +11,28 @@ endif
 " ---------------------- Functions --------------------------------------------
 
 function! Vim_GeeknoteTerminate()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteTerminate
 GeeknoteTerminate()
 endOfPython
 endfunction
 
 function! Vim_GeeknoteToggle()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteToggle
 GeeknoteToggle()
 endOfPython
 endfunction
 
 function! Vim_GeeknoteActivateNode()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteActivateNode
 GeeknoteActivateNode()
 endOfPython
 endfunction
 
 function! Vim_GeeknoteCloseNote(arg1)
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteCloseNote
 filename = vim.eval("a:arg1")
 GeeknoteCloseNote(filename)
@@ -40,7 +40,7 @@ endOfPython
 endfunction
 
 function! Vim_GeeknoteCreateNotebook(arg1)
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteCreateNotebook
 name = vim.eval("a:arg1")
 GeeknoteCreateNotebook(name)
@@ -48,7 +48,7 @@ endOfPython
 endfunction
 
 function! Vim_GeeknoteCreateNote(arg1)
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteCreateNote
 name = vim.eval("a:arg1")
 GeeknoteCreateNote(name)
@@ -56,14 +56,14 @@ endOfPython
 endfunction
 
 function! Vim_GeeknoteSaveAsNote()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteSaveAsNote
 GeeknoteSaveAsNote()
 endOfPython
 endfunction
 
 function! Vim_GeeknoteSearch(arg1)
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteSearch
 args = vim.eval("a:arg1")
 GeeknoteSearch(args)
@@ -71,7 +71,7 @@ endOfPython
 endfunction
 
 function! Vim_GeeknotePrepareToSaveNote(arg1)
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknotePrepareToSaveNote
 filename = vim.eval("a:arg1")
 GeeknotePrepareToSaveNote(filename)
@@ -79,7 +79,7 @@ endOfPython
 endfunction
 
 function! Vim_GeeknoteSaveNote(arg1)
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteSaveNote
 filename = vim.eval("a:arg1")
 GeeknoteSaveNote(filename)
@@ -87,21 +87,21 @@ endOfPython
 endfunction
 
 function! Vim_GeeknoteSync()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteSync
 GeeknoteSync()
 endOfPython
 endfunction
 
 function! Vim_GeeknoteCommitStart()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteCommitStart
 GeeknoteCommitStart()
 endOfPython
 endfunction
 
 function! Vim_GeeknoteCommitComplete()
-python << endOfPython
+python3 << endOfPython
 from vim_geeknote import GeeknoteCommitComplete
 GeeknoteCommitComplete()
 endOfPython

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import evernote.edam.limits.constants as Limits
 
 from geeknote.geeknote import *
@@ -32,7 +34,7 @@ def GeeknoteGetNotes(searchWords=""):
     result = noteStore.findNotesMetadata(authToken, filter, 0, count, meta)
     update_count = lambda c: max(c - len(result.notes), 0)
     count = update_count(count)
-    
+
     while ((result.totalNotes != len(result.notes)) and count != 0):
         offset = len(result.notes)
         result.notes += noteStore.findNotesMetadata(
@@ -68,4 +70,3 @@ def GeeknoteUpdateNote(note):
 
 def GeeknoteUpdateNotebook(notebook):
     noteStore.updateNotebook(authToken, notebook)
-

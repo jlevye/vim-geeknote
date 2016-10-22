@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from conn import *
 
 #======================== Change =============================================#
@@ -38,4 +40,3 @@ class NotebookRenamed(Change):
     def apply(self):
         self.notebook.name = self.newName
         GeeknoteUpdateNotebook(self.notebook)
-

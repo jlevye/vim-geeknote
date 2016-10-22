@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import vim
 import tempfile
 
@@ -99,7 +99,7 @@ def getBufferVariable(bnum, var):
     if GeeknoteNeovimMode:
         bnum -= 1
     return vim.buffers[bnum].options[var]
- 
+
 def getWindowVariable(wnum, var):
     return vim.windows[wnum-1].options[var]
 
@@ -107,7 +107,7 @@ def setBufferVariable(bnum, var, value):
     if GeeknoteNeovimMode:
         bnum -= 1
     vim.buffers[bnum].options[var] = value
- 
+
 def setWindowVariable(wnum, var, value):
     vim.windows[wnum-1].options[var] = value
 

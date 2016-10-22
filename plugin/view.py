@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import vim
 
 from enml  import *
@@ -21,7 +21,7 @@ class NoteTracker(object):
 # Close all opened notes.
 def GeeknoteCloseAllNotes():
     #
-    # Try to delete any temp files that still exist (is is possible that 
+    # Try to delete any temp files that still exist (is is possible that
     # some/all were already garbage collected by the OS.
     #
     try:
@@ -68,7 +68,7 @@ def GeeknoteCommitChangesToNote(note):
     tracker.note.content = textToENML(content)
 
     return True
- 
+
 # Find the object that is tracking the given note (None if note opened).
 def GeeknoteGetNoteTracker(note):
     for filename in openNotes:
@@ -124,7 +124,7 @@ def GeeknoteOpenNote(note):
         # Write the note's title and content to a temporary file.
         f = createTempFile(delete=False)
         f.write(note.title + '\n\n')
-        
+
         isNoteEmpty = not content.strip()
         if isNoteEmpty is False:
             f.write(content)
@@ -149,14 +149,14 @@ def GeeknoteOpenNote(note):
         openNotes[f.name] = NoteTracker(note, vim.current.buffer)
 
         # Register callbacks for the buffer events that affect the note.
-        autocmd('BufWritePre', 
+        autocmd('BufWritePre',
                 '<buffer>',
                 ':call Vim_GeeknotePrepareToSaveNote("{}")'.format(f.name))
 
         autocmd('BufWritePost',
                 '<buffer>',
                 ':call Vim_GeeknoteSaveNote("{}")'.format(f.name))
-     
+
         autocmd('BufDelete',
                 '<buffer>',
                 ':call Vim_GeeknoteCloseNote("{}")'.format(f.name))
@@ -199,11 +199,11 @@ def GeeknoteGetFirstUsableWindow():
        isPreviewWin = getWindowVariable(wnum, 'previewwindow')
        name         = getBufferName(bnum)
 
-       if ((bnum != -1)                 and 
+       if ((bnum != -1)                 and
            (buftype == '')              and
            (name == '')                 and
            (isPreviewWin is False)      and
-           ((isModified  is False)      or 
+           ((isModified  is False)      or
                hidden())):
            return wnum
        wnum += 1
@@ -241,4 +241,3 @@ def GeeknoteIsWindowUsable(wnum):
 
     # If the buffer is open in more than one window, the window is usable.
     return bufInWindows(winbufnr(wnum)) > 1
-

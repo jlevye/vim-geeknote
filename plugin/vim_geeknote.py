@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import vim
 import re
 
@@ -81,7 +83,7 @@ def GeeknoteCreateNotebook(name):
     explorer.addNotebook(notebook)
 
 def GeeknoteHandleNoteSaveFailure(note, e):
-    print e
+    print(e)
     msg  = '+------------------- WARNING -------------------+\n'
     msg += '|                                               |\n'
     msg += '| Failed to save note (see error above)         |\n'
@@ -89,14 +91,14 @@ def GeeknoteHandleNoteSaveFailure(note, e):
     msg += '| Save buffer to a file to avoid losing content |\n'
     msg += '|                                               |\n'
     msg += '+------------------- WARNING -------------------+\n'
-    vim.command('echoerr "%s"' % msg)
+    vim.command('echoerr "%s"'.format(msg))
 
 def GeeknoteSaveAsNote():
     global explorer
 
     #
     # Figure out what notebook to place the note in. Give preference
-    # to the notebook selected in the explorer window (if one is 
+    # to the notebook selected in the explorer window (if one is
     # selected). Otherwise, place it into the default notebook.
     #
     notebook = None
@@ -164,7 +166,7 @@ def GeeknoteSearch(args):
 
 def GeeknoteSync():
     explorer.commitChanges()
-    explorer.refresh()    
+    explorer.refresh()
     explorer.render()
 
 def GeeknoteTerminate():
@@ -177,4 +179,3 @@ def GeeknoteToggle():
         explorer.show()
     else:
         explorer.hide()
-

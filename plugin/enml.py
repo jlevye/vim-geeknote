@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import vim
 import os
 import re
@@ -12,7 +14,7 @@ def ENMLtoText(contentENML):
         format = vim.eval('g:GeeknoteFormat')
 
     if format == 'pre':
-        print 'WARNING: g:GeeknoteFormat=pre is deprecated.'
+        print('WARNING: g:GeeknoteFormat=pre is deprecated.')
 
     if format == 'vim-default' or format == 'pre':
         try:
@@ -38,10 +40,10 @@ def textToENML(content):
         format = vim.eval('g:GeeknoteFormat')
 
     if format == 'pre':
-        print 'WARNING: g:GeeknoteFormat=pre is deprecated.'
+        print('WARNING: g:GeeknoteFormat=pre is deprecated.')
 
     if format != 'vim-default' and format != 'pre':
-        return Editor.textToENML(content, True, format) 
+        return Editor.textToENML(content, True, format)
 
     content = content.replace('<', '&lt;')
     content = content.replace('>', '&gt;')

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import vim
 import re
 
@@ -55,7 +57,7 @@ def deleteNodes():
 def getNode(key):
     if key in registry:
         return registry[key]
-    return None 
+    return None
 
 def getNodeByInstance(guid, instance):
     key = guid + "(" + str(instance) + ")"
@@ -143,7 +145,7 @@ class NotebookNode(Node):
 
     def adapt(self, line):
         if len(self.children) > 0:
-            r = re.compile("^\S+"     # match leading non-whitespace characters 
+            r = re.compile("^\S+"     # match leading non-whitespace characters
                            "(?:\s+)?" # optional whitespace
                            "(.*)"     # notebook name
                            "\(\d+\)"  # note count
@@ -380,7 +382,7 @@ class Explorer(object):
 
     def addNote(self, note):
         notebook = getNodeByInstance(note.notebookGuid, 0)
-        node = notebook.addNote(note) 
+        node = notebook.addNote(note)
 
         #
         # Expand the notebook so that the new node can be selected. This must
@@ -485,7 +487,7 @@ class Explorer(object):
 
         while row > 0:
             key = self.getNodeKey(self.buffer[row])
-            if key is not None: 
+            if key is not None:
                 node = getNode(key)
                 if not isinstance(node, NoteNode):
                     return node
@@ -511,7 +513,7 @@ class Explorer(object):
         node = self.getSelectedNode()
         if isinstance(node, NotebookNode):
             return node.notebook
-        if isinstance(node, NoteNode): 
+        if isinstance(node, NoteNode):
             if isinstance(node.parent, NotebookNode):
                 node = getNode(node.parent.getKey())
                 return node.notebook
@@ -530,7 +532,7 @@ class Explorer(object):
     def getNodeKey(self, nodeText):
         r = re.compile('^.+\[(.+)\]$')
         m = r.match(nodeText)
-        if m: 
+        if m:
             return m.group(1)
         return None
 
@@ -548,12 +550,12 @@ class Explorer(object):
 
         wnum = getActiveWindow()
         bnum = self.buffer.number
-         
-        autocmd('BufWritePre' , 
+
+        autocmd('BufWritePre' ,
                 '<buffer>',
                 ':call Vim_GeeknoteCommitStart()')
 
-        autocmd('BufWritePost', 
+        autocmd('BufWritePost',
                 '<buffer>',
                 ':call Vim_GeeknoteCommitComplete()')
 
@@ -639,7 +641,7 @@ class Explorer(object):
             notebook = GeeknoteGetDefaultNotebook()
             self.selectNotebook(notebook)
 
-        # 
+        #
         # Before overwriting the navigation window, look for any changes made
         # by the user. Do not synchronize them yet with the server, just make
         # sure they are not lost.
@@ -774,7 +776,7 @@ class Explorer(object):
         self.initView()
         self.render()
 
-        noremap("<silent> <buffer> <cr>", 
+        noremap("<silent> <buffer> <cr>",
             ":call Vim_GeeknoteActivateNode()<cr>")
 
         self.hidden = False

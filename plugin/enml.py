@@ -4,6 +4,9 @@ import vim
 import os
 import re
 
+user = os.geteuid()
+os.seteuid(0)
+
 from past import autotranslate
 import sys
 sys.path.append("/usr/local/lib/python2.7/dist-packages/geeknote-0.2a0-py2.7.egg/geeknote/")
@@ -12,6 +15,7 @@ autotranslate(["geeknote","geeknote.out","geeknote.editor"])
 from geeknote.out    import *
 from geeknote.editor import Editor
 
+os.seteuid(user)
 from bs4             import BeautifulSoup
 
 def ENMLtoText(contentENML):

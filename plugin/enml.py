@@ -9,7 +9,8 @@ os.seteuid(0)
 
 from past import autotranslate
 import sys
-sys.path.append("/usr/local/lib/python2.7/dist-packages/")
+sys.path.append("/usr/local/lib/python2.7/dist-packages/geeknote-0.2a0-py2.7.egg/")
+sys.path.append("/usr/local/lib/python2.7/dist-packages/thrift-0.9.3-py2.7-linux-x86_64.egg")
 autotranslate(["geeknote","geeknote.out","geeknote.editor","thrift"])
 
 from geeknote.out    import *

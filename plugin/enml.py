@@ -4,6 +4,11 @@ import vim
 import os
 import re
 
+from past import autotranslate
+import sys
+sys.path.append("/usr/local/lib/python2.7/dist-packages/geeknote-0.2a0-py2.7.egg/")
+autotranslate(["geeknote"])
+
 from geeknote.out    import *
 from geeknote.editor import Editor
 from bs4             import BeautifulSoup

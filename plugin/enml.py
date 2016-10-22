@@ -7,7 +7,7 @@ import re
 from past import autotranslate
 import sys
 sys.path.append("/usr/local/lib/python2.7/dist-packages")
-autotranslate(["geeknote.out","geeknote.editor"])
+autotranslate(["geeknote","geeknote.out","geeknote.editor"])
 
 from geeknote.out    import *
 from geeknote.editor import Editor
